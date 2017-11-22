@@ -26,6 +26,10 @@ public class AD02_Ejer02 {
         
     Map<String, Object> params = new HashMap<String, Object>();
     
+    params.put("reportTitle", "Informe Hola Mundo");
+    params.put("author", "José Javier Bermúdez hernández");
+    params.put("startDate", (new java.util.Date()).toString());    
+    
         try {
             
             JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
