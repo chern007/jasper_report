@@ -19,8 +19,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     <field name="CUSTOMER_ID" class="java.lang.Integer"/>
     <field name="CUSTOMER_ID" class="java.lang.Integer"/>
     </jasperReport><field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    
+    <field name="CUSTOMER_ID" class="java.lang.Integer"/>    
     
     
     
