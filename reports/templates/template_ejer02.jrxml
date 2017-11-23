@@ -17,10 +17,9 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     </queryStrig>
     
     <field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    </jasperReport><field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    <field name="CUSTOMER_ID" class="java.lang.Integer"/>    
-    
+    <field name="NAME" class="java.lang.String"/>
+    <field name="CITY" class="java.lang.String"/>
+    <field name="STATE" class="java.lang.String"/>
     
     
     <title>
@@ -44,6 +43,36 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
             </textField>
         </band> 
     </title>
+    
+    <columnHeader>
+        
+        <band height="30">
+            <rectangle>
+                <reportElement x="0" y="0" width="500" height="25" />
+                <graphicElement/>                          
+            </rectangle>
+            
+            <staticText>
+                <reportElement x="5" y="5" width="50" height="15"/>
+                <textElement/>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="55" y="5" width="50" height="15"/>                
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="205" y="5" width="255" height="15"/>
+                <textElement/>
+                <text><![CDATA[Ciudad,Estado]]></text>
+            </staticText>
+                           
+        </band> 
+        
+    </columnHeader> 
+    
     
     <detail>
        
