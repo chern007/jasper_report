@@ -15,7 +15,6 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author chern007
  */
 public class AD02_Ejer02 {
-
     /**
      * @param args the command line arguments
      */
