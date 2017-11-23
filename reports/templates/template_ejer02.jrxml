@@ -14,11 +14,14 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
         
         <![CDATA[SELECT * FROM CUSTOMER ORDER BY STATE, CITY]]>
         
-        
-        
-        
-        
     </queryStrig>
+    
+    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
+    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
+    </jasperReport><field name="CUSTOMER_ID" class="java.lang.Integer"/>
+    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
+    
+    
     
     
     <title>
