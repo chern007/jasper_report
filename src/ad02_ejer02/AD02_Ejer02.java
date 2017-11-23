@@ -5,7 +5,7 @@
  */
 package ad02_ejer02;
 
-import java.io.File;
+import java.sql.DriverManager;
 import java.util.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -26,14 +26,18 @@ public class AD02_Ejer02 {
     Map<String, Object> params = new HashMap<String, Object>();
     
     params.put("reportTitle", "Informe Hola Mundo");
-    params.put("author", "José Javier Bermúdez hernández");
+    params.put("author", "Carlos Hernández Crespo");
     params.put("startDate", (new java.util.Date()).toString());    
     
         try {
             
             JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
             
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            
+            java.sql.Connection conexion = DriverManager.getConnection("jdbc:derby://localhost:1527/sample","app","app");
+                        
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, conexion);
             
             JasperExportManager.exportReportToHtmlFile(jasperPrint, reportDest);
                     

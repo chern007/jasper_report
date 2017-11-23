@@ -6,15 +6,14 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
 <jasperReport name="HelloReportWorld">
     
     <parameter name="reportTitle" class="java.lang.String" />
-    <paramenter name="author" class="java.lang.String"/>
-    <paramenter name="startDate" class="java.lang.String"/>
+    <parameter name="author" class="java.lang.String"/>
+    <parameter name="startDate" class="java.lang.String"/>    
     
-    
-    <queryStrig>
+    <queryString>
         
         <![CDATA[SELECT * FROM CUSTOMER ORDER BY STATE, CITY]]>
         
-    </queryStrig>
+    </queryString>
     
     <field name="CUSTOMER_ID" class="java.lang.Integer"/>
     <field name="NAME" class="java.lang.String"/>
@@ -27,7 +26,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
             <textField>
                 <reportElement x="0" y ="10" width="500" height="40"/>
                 <textElement textAlignment="Center">
-                   <font size="24"/>                    
+                    <font size="24"/>                    
                 </textElement>
                 <textFieldExpression class="java.lang.String">
                     <![CDATA[$P{reportTitle}]]>
@@ -35,7 +34,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
             </textField>
             
             <textField>
-              <reportElement x="0" y="40" width="500" height="20"/>
+                <reportElement x="0" y="40" width="500" height="20"/>
                 <textElement textAlignment="Center"/>
                 <textFieldExpression class="java.lang.String">
                     <![CDATA["Ejecutado por: " + $P {author} + " on " + $P{startDate}]]>
@@ -59,14 +58,14 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
             </staticText>
             
             <staticText>
-                <reportElement x="55" y="5" width="50" height="15"/>                
+                <reportElement x="55" y="5" width="150" height="15"/>                
                 <text><![CDATA[Nombre]]></text>
             </staticText>
             
             <staticText>
                 <reportElement x="205" y="5" width="255" height="15"/>
                 <textElement/>
-                <text><![CDATA[Ciudad,Estado]]></text>
+                <text><![CDATA[Ciudad, Estado]]></text>
             </staticText>
                            
         </band> 
@@ -76,12 +75,33 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     
     <detail>
        
-        <band height="200">
+        <band height="20">
            
-            <staticText>               
-                <reportElement x="0" y="0" width="500" height="20"/>
-                <text><![CDATA[ Informe ¡Hola Mundo!]]></text>
-            </staticText>
+            <textField>
+                <reportElement x="5" y="0" width="50" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{CUSTOMER_ID}]]>
+                </textFieldExpression>                
+            </textField>
+            
+            <textField>
+                <reportElement x="55" y="0" width="150" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{NAME}]]>
+                </textFieldExpression>                
+            </textField>
+            
+            
+            <textField>
+                <reportElement x="205" y="0" width="255" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{CITY} + ", " + $F{STATE}]]>
+                </textFieldExpression>                
+            </textField>            
+
         </band>
     </detail>
     
