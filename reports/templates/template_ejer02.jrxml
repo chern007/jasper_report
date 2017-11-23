@@ -9,6 +9,18 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     <paramenter name="author" class="java.lang.String"/>
     <paramenter name="startDate" class="java.lang.String"/>
     
+    
+    <queryStrig>
+        
+        <![CDATA[SELECT * FROM CUSTOMER ORDER BY STATE, CITY]]>
+        
+        
+        
+        
+        
+    </queryStrig>
+    
+    
     <title>
         <band>
             <textField>
