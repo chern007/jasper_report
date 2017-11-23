@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE jasperReport 
+PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+
+<jasperReport name="HelloReportWorld">
+    
+    <parameter name="reportTitle" class="java.lang.String" />
+    <paramenter name="author" class="java.lang.String"/>
+    <paramenter name="startDate" class="java.lang.String"/>
+    
+    <title>
+        <band>
+            <textField>
+                <reportElement x="0" y ="10" width="500" height="40"/>
+                <textElement textAlignment="Center">
+                   <font size="24"/>                    
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{reportTitle}]]>
+                </textFieldExpression>
+            </textField>
+            
+            <textField>
+              <reportElement x="0" y="40" width="500" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["Ejecutado por: " + $P {author} + " on " + $P{startDate}]]>
+                </textFieldExpression> 
+            </textField>
+        </band> 
+    </title>
+    
+    <detail>
+       
+        <band height="200">
+           
+            <staticText>               
+                <reportElement x="0" y="0" width="500" height="20"/>
+                <text><![CDATA[ Informe ¡Hola Mundo!]]></text>
+            </staticText>
+        </band>
+    </detail>
+    
+</jasperReport>
