@@ -22,7 +22,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     
     
     <title>
-        <band>
+        <band height="60">
             <textField>
                 <reportElement x="0" y ="10" width="500" height="40"/>
                 <textElement textAlignment="Center">
@@ -37,7 +37,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
                 <reportElement x="0" y="40" width="500" height="20"/>
                 <textElement textAlignment="Center"/>
                 <textFieldExpression class="java.lang.String">
-                    <![CDATA["Ejecutado por: " + $P {author} + " on " + $P{startDate}]]>
+                    <![CDATA["Ejecutado por: " + $P{author} + " on " + $P{startDate}]]>
                 </textFieldExpression> 
             </textField>
         </band> 
