@@ -3,7 +3,7 @@
 PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 
 
-<jasperReport name="HelloReportWorld">
+<jasperReport name="HelloReportWorld" pageWidth="842" pageHeight="595" orientation="Landscape">
     
     <parameter name="reportTitle" class="java.lang.String" />
     <parameter name="author" class="java.lang.String"/>
@@ -11,14 +11,23 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
     
     <queryString>
         
-        <![CDATA[SELECT * FROM CUSTOMER ORDER BY STATE, CITY]]>
+        <![CDATA[SELECT P.ORDER_NUM as "NUM. ORDEN", C.CUSTOMER_ID as "NUM. CLIENTE", C."NAME" as "NOMBRE CLIENTE", PR.PRODUCT_ID as "COD. PRODUCTO", PR.DESCRIPTION as "DESCRIPCION", PR.PURCHASE_COST as "PRECIO", P.QUANTITY as "CANTIDAD", (PR.PURCHASE_COST* P.QUANTITY) AS "IMPORTE"
+        FROM CUSTOMER C, PURCHASE_ORDER P, PRODUCT PR
+        WHERE C.CUSTOMER_ID = P.CUSTOMER_ID AND P.PRODUCT_ID = PR.PRODUCT_ID
+        ORDER BY P.ORDER_NUM]]>
+
         
     </queryString>
     
-    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
-    <field name="NAME" class="java.lang.String"/>
-    <field name="CITY" class="java.lang.String"/>
-    <field name="STATE" class="java.lang.String"/>
+    <field name="NUM. ORDEN" class="java.lang.Integer"/>
+    <field name="NUM. CLIENTE" class="java.lang.Integer"/>    
+    <field name="NOMBRE CLIENTE" class="java.lang.String"/>
+    <field name="COD. PRODUCTO" class="java.lang.Integer"/>
+    <field name="DESCRIPCION" class="java.lang.String"/>
+    <field name="PRECIO" class="java.lang.Integer"/>
+    <field name="CANTIDAD" class="java.lang.Integer"/>
+    <field name="IMPORTE" class="java.lang.Integer"/>
+
     
     
     <title>
@@ -38,7 +47,7 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
                 <textElement textAlignment="Center"/>
                 <textFieldExpression class="java.lang.String">
                     <![CDATA["Ejecutado por: " + $P{author} + " on " + $P{startDate}]]>
-                </textFieldExpression> 
+                </textFieldExpression>
             </textField>
         </band> 
     </title>
@@ -47,25 +56,53 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
         
         <band height="30">
             <rectangle>
-                <reportElement x="0" y="0" width="500" height="25" />
+                <reportElement x="0" y="0" width="600" height="25" />
                 <graphicElement/>                          
             </rectangle>
             
             <staticText>
-                <reportElement x="5" y="5" width="50" height="15"/>
+                <reportElement x="5" y="5" width="70" height="15"/>
                 <textElement/>
-                <text><![CDATA[ID]]></text>
+                <text><![CDATA[NUM. ORDEN]]></text>
             </staticText>
             
             <staticText>
-                <reportElement x="55" y="5" width="150" height="15"/>                
-                <text><![CDATA[Nombre]]></text>
+                <reportElement x="75" y="5" width="50" height="15"/>                
+                <text><![CDATA[NUM. CLIENTE]]></text>
             </staticText>
             
             <staticText>
-                <reportElement x="205" y="5" width="255" height="15"/>
+                <reportElement x="125" y="5" width="100" height="15"/>
                 <textElement/>
-                <text><![CDATA[Ciudad, Estado]]></text>
+                <text><![CDATA[NOMBRE CLIENTE]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="225" y="5" width="50" height="15"/>
+                <textElement/>
+                <text><![CDATA[COD. PRODUCTO]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="275" y="5" width="150" height="15"/>                
+                <text><![CDATA[DESCRIPCION]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="425" y="5" width="50" height="15"/>
+                <textElement/>
+                <text><![CDATA[PRECIO]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="475" y="5" width="50" height="15"/>                
+                <text><![CDATA[CANTIDAD]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="525" y="5" width="50" height="15"/>
+                <textElement/>
+                <text><![CDATA[IMPORTE]]></text>
             </staticText>
                            
         </band> 
@@ -81,26 +118,66 @@ PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourcefor
                 <reportElement x="5" y="0" width="50" height="15" />
                 <textElement/>
                 <textFieldExpression class="java.lang.Integer">
-                    <![CDATA[$F{CUSTOMER_ID}]]>
+                    <![CDATA[$F{NUM. ORDEN}]]>
                 </textFieldExpression>                
             </textField>
             
             <textField>
-                <reportElement x="55" y="0" width="150" height="15" />
+                <reportElement x="55" y="0" width="50" height="15" />
                 <textElement/>
-                <textFieldExpression class="java.lang.String">
-                    <![CDATA[$F{NAME}]]>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{NUM. CLIENTE}]]>
                 </textFieldExpression>                
             </textField>
             
-            
             <textField>
-                <reportElement x="205" y="0" width="255" height="15" />
+                <reportElement x="105" y="0" width="100" height="15" />
                 <textElement/>
                 <textFieldExpression class="java.lang.String">
-                    <![CDATA[$F{CITY} + ", " + $F{STATE}]]>
+                    <![CDATA[$F{NOMBRE CLIENTE}]]>
                 </textFieldExpression>                
-            </textField>            
+            </textField>
+            
+            <textField>
+                <reportElement x="205" y="0" width="50" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{COD. PRODUCTO}]]>
+                </textFieldExpression>                
+            </textField>
+            
+            <textField>
+                <reportElement x="255" y="0" width="150" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{DESCRIPCION}]]>
+                </textFieldExpression>                
+            </textField> 
+            
+            <textField>
+                <reportElement x="450" y="0" width="50" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{PRECIO}]]>
+                </textFieldExpression>                
+            </textField>
+            
+            <textField>
+                <reportElement x="455" y="0" width="50" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{CANTIDAD}]]>
+                </textFieldExpression>                
+            </textField>
+            
+            <textField>
+                <reportElement x="505" y="0" width="50" height="15" />
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{IMPORTE}]]>
+                </textFieldExpression>                
+            </textField>        
+                                             
 
         </band>
     </detail>
